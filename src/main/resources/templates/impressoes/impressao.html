@@ -1,14 +1,14 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>Gestão do Departamento Voluntário - CheckList</title>
+	<title>Gráfico - Selic</title>
 	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
 	<!-- Font Awesome icons (free version)-->
 	<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 	<!-- Google fonts-->
@@ -18,9 +18,7 @@
 	<link href="/css/animate.min.css" rel="stylesheet" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="/css/styles.css" rel="stylesheet" />
-	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} " />
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -35,18 +33,55 @@
 		integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+	<script language="javascript" type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<style>
+		@page {
+			size: A4 landscape;
+		}
+	</style>
 </head>
 
-<body id="page-top" class="masthead">
+<body class="flex items-center justify-center h-screen">
 
-	<div class="container">
+	<section class="container">
 
-		<div class="starter-template">
-			<h1>Ops, nada aqui =(</h1>
-			<div th:inline="text">Oii, esta pagina não existe!</div>
+		<script type="text/javascript" th:inline="javascript">
+
+			var real_grafico = /*[[${grafico}]]*/'noValue';
+
+			google.charts.load('current', {'packages': ['corechart'], 'language': 'pt'});
+
+			google.charts.setOnLoadCallback(drawBasicTxSelic);
+
+			function drawBasicTxSelic() {
+
+				var data = google.visualization.arrayToDataTable(real_grafico);
+
+				var options = {
+					title: "Taxa de Juros Selic - Série 11",
+				};
+
+				var chart_div_tx_selic = document.getElementById('chart_div_tx_selic');
+				var chart = new google.visualization.LineChart(document.getElementById('chart_div_tx_selic'));
+
+				// Wait for the chart to finish drawing before calling the getImageURI() method.
+				google.visualization.events.addListener(chart, 'ready', function () {
+					chart_div_tx_selic.innerHTML = '<img src="' + chart.getImageURI() + '">';
+					console.log(chart_div_tx_selic.innerHTML);
+				});
+
+				chart.draw(data, options);
+			}
+
+		</script>
+
+		<div class="row">
+			<div id="chart_div_tx_selic" style="width: auto; height: auto; border: 1px solid #ccc"></div>
 		</div>
 
-	</div>
+	</section>
+
 </body>
 
 </html>

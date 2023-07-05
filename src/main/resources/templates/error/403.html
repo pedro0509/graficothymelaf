@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>Gestão do Departamento Voluntário - CheckList</title>
+	<title>Gráfico - Selic</title>
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 	<!-- Font Awesome icons (free version)-->
@@ -18,7 +18,6 @@
 	<link href="/css/animate.min.css" rel="stylesheet" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="/css/styles.css" rel="stylesheet" />
-	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} " />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
 
@@ -34,21 +33,17 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"
 		integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script language="JavaScript" type="text/javascript" src="/js/checklist.js"></script>
 
 </head>
 
 <body id="page-top" class="masthead">
 
-	<section class="container">
-		<div th:replace="fragments/header :: header"></div>
-	</section>
 
 	<div class="container">
 
 		<div class="starter-template">
 			<h1>Infelizmente você não tem permissão para estar aqui.</h1>
-			<div th:inline="text">Olá [[${#httpServletRequest.remoteUser}]] você não tem permissão para acessar esta
+			<div th:inline="text">Olá, você não tem permissão para acessar esta
 				pagina, entre em contato
 				com o seu administrador.</div>
 		</div>

@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="Pedro Rosa Domingues" />
-	<title>Gráfico da Taxa Selic</title>
+	<title>Gráfico - Selic</title>
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
 	<!-- Font Awesome icons (free version)-->
@@ -54,7 +54,9 @@
 				var data = google.visualization.arrayToDataTable(real_grafico);
 
 				var options = {
-					title: "Taxa Selic",
+					title: "Taxa de Juros Selic - Série 11",
+					curveType: 'function',
+					legend: {position: 'right'}
 				};
 
 				var chart = new google.visualization.LineChart(document.getElementById('chart_div_tx_selic'));
@@ -65,7 +67,18 @@
 		</script>
 
 		<div>
-			<div id="chart_div_tx_selic"></div>
+			<div id="chart_div_tx_selic" style="width:100%; height:500;border: 1px solid #ccc"></div>
+		</div>
+
+		<div>
+			<div class="p-3">
+				<div class="row">
+					<div class="col-2 col-md-2">
+						<a type="button" class="btn btn-primary" target="_blank" th:href="@{/pdf}"><i
+								class="bi bi-printer-fill"></i> Imprimir</a>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</section>

@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +37,8 @@ public class WebClientSelic {
 		Response response = client.newCall(request).execute();
 
 		if (response.code() != 200) {
-			Log logger = LogFactory.getLog(getClass());
-			logger.error(response.toString());
-			return null;
+			log.error(response.toString());
+			return new JSONArray();
 		} else
 			return new JSONArray(response.body().string());
 	}
@@ -58,9 +55,8 @@ public class WebClientSelic {
 		Response response = client.newCall(request).execute();
 
 		if (response.code() != 200) {
-			Log logger = LogFactory.getLog(getClass());
-			logger.error(response.toString());
-			return null;
+			log.error(response.toString());
+			return new JSONArray();
 		} else
 			return new JSONArray(response.body().string());
 	}
